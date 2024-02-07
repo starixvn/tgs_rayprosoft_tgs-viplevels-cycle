@@ -1,7 +1,8 @@
 ﻿using Tgs.ServiceUtility;
-using Valhalla.MessageQueue;
-using Tgs.VipLevels.Cycle.Core.Protos;
 using Tgs.VipLevels.Cycle.Core.ApplicationServices;
+
+using Tgs.VipLevels.Cycle.Core.Protos;
+using Valhalla.MessageQueue;
 
 namespace Tgs.VipLevels.Cycle.Messages;
 

@@ -1,9 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Google.Protobuf.WellKnownTypes;
+
+using Microsoft.Extensions.Logging;
 
 using Tgs.ServiceUtility;
-using Valhalla.MessageQueue;
 using Tgs.VipLevels.Cycle.Core.Protos;
-using Google.Protobuf.WellKnownTypes;
+using Valhalla.MessageQueue;
 
 namespace Tgs.VipLevels.Cycle.Core.JobApplicationServices;
 

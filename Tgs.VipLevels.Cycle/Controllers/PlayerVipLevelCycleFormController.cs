@@ -10,6 +10,7 @@ using Valhalla.MessageQueue;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Tgs.VipLevels.Cycle.Controllers;
+
 [Route("form")]
 [ApiController]
 public class PlayerVipLevelCycleFormController(
@@ -26,7 +27,7 @@ public class PlayerVipLevelCycleFormController(
 	/// <b>Example</b><br />
 	///
 	///     Post
-	///     
+	///
 	///		當前時間 2024-01-01T00:00:00+08:00觸發季福利
 	///		週期時間 2023-10-01~2024-01-01
 	///			{

@@ -1,10 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
 using Tgs.ServiceUtility;
-using Tgs.VipLevelService.Clients;
-using Valhalla.MessageQueue;
 using Tgs.VipLevels.Cycle.Core.Protos;
 
+using Tgs.VipLevelService.Clients;
+using Valhalla.MessageQueue;
+
 namespace Tgs.VipLevels.Cycle.Core.ApplicationServices;
+
 internal class FormQueueCommandService(
 	ILogger<FormQueueCommandService> logger,
 	IVipLevelServiceClient vipLevelServiceClient,

@@ -6,6 +6,7 @@ using Tgs.VipLevelService.Clients;
 using Valhalla.MessageQueue;
 
 namespace Tgs.VipLevels.Cycle.Core.ApplicationServices;
+
 internal class FormCreateCommandService(
 	ILogger<FormCreateCommandService> logger,
 	ISystemClock systemClock,
@@ -115,7 +116,6 @@ internal class FormCreateCommandService(
 			}
 
 			page++;
-
 		} while (playerCodes.Any());
 	}
 }

@@ -4,6 +4,7 @@ using Tgs.VipLevels.Cycle.Core.Models;
 using Tgs.VipLevels.Cycle.Entities;
 
 namespace Tgs.VipLevels.Cycle.Repositories;
+
 internal class BrandRepository(TgsContext context) : IBrandRepository
 {
 	public async ValueTask<BrandInfo> GetAsync(string code, CancellationToken cancellationToken = default)
@@ -52,6 +53,7 @@ internal class BrandRepository(TgsContext context) : IBrandRepository
 		.FirstOrDefaultAsync(cancellationToken: cancellationToken)
 		.ConfigureAwait(false)
 		?? throw new NullReferenceException($"This brand cannot be found.({code})");
+
 	public IAsyncEnumerable<BrandInfo> QueryAsync(CancellationToken cancellationToken = default)
 		=> context.Brands.AsQueryable()
 		.Join(
