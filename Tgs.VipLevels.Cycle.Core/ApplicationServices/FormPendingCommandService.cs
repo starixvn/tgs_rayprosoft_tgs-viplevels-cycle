@@ -10,7 +10,7 @@ internal class FormPendingCommandService(
 {
 	public async ValueTask ExecuteAsync(FormPendingCommand command, CancellationToken cancellationToken = default)
 	{
-		var form = await vipLevelServiceClient.PlayerVipLevelBirthdayFormGetAsync(
+		var form = await vipLevelServiceClient.PlayerVipLevelCycleFormGetAsync(
 			id: command.Id,
 			cancellationToken: cancellationToken)
 			.ConfigureAwait(false);
@@ -23,7 +23,7 @@ internal class FormPendingCommandService(
 			return;
 		}
 
-		if (form.State != VipLevelService.Common.PlayerVipLevelBirthdayFormState.Create)
+		if (form.State != VipLevelService.Common.PlayerVipLevelCycleFormState.Create)
 		{
 			logger.LogWarning("LogOn:{logOn} Message:This form({id}) status is not created.({state})",
 				DateTime.Now.ToString("u"),
@@ -32,7 +32,7 @@ internal class FormPendingCommandService(
 			return;
 		}
 
-		await vipLevelServiceClient.PlayerVipLevelBirthdayFormPendingAsync(
+		await vipLevelServiceClient.PlayerVipLevelCycleFormPendingAsync(
 			id: form.Id,
 			operatorUserId: Guid.Empty,
 			operatorUsername: "system",
