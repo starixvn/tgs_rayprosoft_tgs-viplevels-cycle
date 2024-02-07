@@ -35,7 +35,7 @@ internal class FormPendingCommandService(
 		await vipLevelServiceClient.PlayerVipLevelCycleFormPendingAsync(
 			id: form.Id,
 			operatorUserId: Guid.Empty,
-			operatorUsername: " ",
+			operatorUsername: "system",
 			cancellationToken: cancellationToken)
 			.ConfigureAwait(false);
 	}

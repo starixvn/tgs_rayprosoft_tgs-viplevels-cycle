@@ -95,7 +95,7 @@ internal class FormCreateCommandService(
 					fromOn: fromOn,
 					toOn: toOn,
 					operatorUserId: Guid.Empty,
-					operatorUsername: " ",
+					operatorUsername: "system",
 					cancellationToken: cancellationToken)
 					.ConfigureAwait(false);
 

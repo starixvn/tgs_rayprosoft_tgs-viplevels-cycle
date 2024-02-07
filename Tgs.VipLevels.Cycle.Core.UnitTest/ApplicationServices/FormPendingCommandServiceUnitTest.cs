@@ -59,7 +59,7 @@ public class FormPendingCommandServiceUnitTest
 			.PlayerVipLevelCycleFormPendingAsync(
 			id: Arg.Is(form.Id),
 			operatorUserId: Arg.Is(Guid.Empty),
-			operatorUsername: Arg.Is(" "),
+			operatorUsername: Arg.Is("system"),
 			cancellationToken: Arg.Any<CancellationToken>());
 	}
 }
