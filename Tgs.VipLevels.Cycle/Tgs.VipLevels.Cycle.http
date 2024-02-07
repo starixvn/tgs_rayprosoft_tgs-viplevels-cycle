@@ -1,0 +1,6 @@
+@Tgs.VipLevels.Cycle_HostAddress = http://localhost:5186
+
+GET {{Tgs.VipLevels.Cycle_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
