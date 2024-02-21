@@ -29,7 +29,3 @@ message VipLevelsCycleBrandMessage {
 	int32 time_span_minutes = 7;
     google.protobuf.Timestamp current_time = 8;
 }
-message VipLevelsCycleFormMessage {
-    // 玩家VipLevel生日單號
-    phoenix.protobuf.GuidValue id = 1;
-}
