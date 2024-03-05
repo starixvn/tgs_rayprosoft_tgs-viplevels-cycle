@@ -27,5 +27,6 @@ message VipLevelsCycleBrandMessage {
     string brand_code = 6;
     // 平台時間輟
 	int32 time_span_minutes = 7;
+    // 當前時間
     google.protobuf.Timestamp current_time = 8;
 }
