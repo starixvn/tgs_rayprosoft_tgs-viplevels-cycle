@@ -3,7 +3,8 @@
 using Microsoft.Extensions.Logging;
 
 using Tgs.ServiceUtility;
-using Tgs.VipLevels.Cycle.Core.Protos;
+using Tgs.VipLevels.Cycle.Common;
+using Tgs.VipLevels.Cycle.Common.Protos;
 using Valhalla.MessageQueue;
 
 namespace Tgs.VipLevels.Cycle.Core.JobApplicationServices;

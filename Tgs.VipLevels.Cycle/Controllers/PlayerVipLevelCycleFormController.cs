@@ -1,13 +1,10 @@
-﻿using System.Threading;
-using Google.Protobuf.WellKnownTypes;
+﻿using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Mvc;
-using Tgs.ServiceUtility;
+using Tgs.VipLevels.Cycle.Common;
+using Tgs.VipLevels.Cycle.Common.Protos;
 using Tgs.VipLevels.Cycle.Core;
-using Tgs.VipLevels.Cycle.Core.Protos;
 using Tgs.VipLevels.Cycle.ViewModels;
-using Tgs.VipLevelService.Common.ViewModels;
 using Valhalla.MessageQueue;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Tgs.VipLevels.Cycle.Controllers;
 

@@ -12,6 +12,7 @@ using Tgs.MessageQueue.Nats.Serializers;
 using Tgs.VipLevels.Cycle.Messages;
 using Tgs.VipLevels.Cycle;
 using Tgs.VipLevels.Cycle.Core;
+using Tgs.VipLevels.Cycle.Common;
 
 var filterInstrumentations = new[] { "html", "ico", "png", "jpg" };
 

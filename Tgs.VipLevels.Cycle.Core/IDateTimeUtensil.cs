@@ -1,4 +1,5 @@
 ﻿namespace Tgs.VipLevels.Cycle.Core;
+
 public interface IDateTimeUtensil
 {
 	(DateTimeOffset FromOn, DateTimeOffset ToOn) GetSeasonTimeZone(DateTimeOffset source, int timeSpanMinutes = 480);

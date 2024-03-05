@@ -10,7 +10,9 @@ data:
     {
       "Logging": {
         "LogLevel": {
-          "Default": "Information"
+          "Default": "Warning",
+          "Tgs.VipLevels.Cycle.Messages": "Information",
+          "Tgs.VipLevels.Cycle.Core.ApplicationServices": "Information"
         }
       },
       "VipLevelConnectionStrings": {

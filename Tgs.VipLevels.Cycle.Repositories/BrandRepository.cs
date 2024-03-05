@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Tgs.VipLevels.Cycle.Core;
 using Tgs.VipLevels.Cycle.Core.Models;
 using Tgs.VipLevels.Cycle.Entities;
@@ -41,7 +42,7 @@ internal class BrandRepository(TgsContext context) : IBrandRepository
 				combined.BrandStatus,
 				combined.TimeSpanMinutes
 			})
-		.Where(predicate: combined => combined.BrandCode == code && combined.ResellerStatus != 2 && combined.LicenseeStatus != 2 && combined.BrandStatus != 2)
+		.Where(predicate: combined => combined.BrandCode == code)
 		.Select(selector: combined => new BrandInfo(
 			combined.ResellerId,
 			combined.ResellerCode,
@@ -52,7 +53,7 @@ internal class BrandRepository(TgsContext context) : IBrandRepository
 			combined.TimeSpanMinutes))
 		.FirstOrDefaultAsync(cancellationToken: cancellationToken)
 		.ConfigureAwait(false)
-		?? throw new NullReferenceException($"This brand cannot be found.({code})");
+		?? throw new ArgumentNullException(code);
 
 	public IAsyncEnumerable<BrandInfo> QueryAsync(CancellationToken cancellationToken = default)
 		=> context.Brands.AsQueryable()

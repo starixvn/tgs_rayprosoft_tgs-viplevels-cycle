@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 using Tgs.PlayerService.Client;
-using Tgs.VipLevels.Cycle.Core;
 using Tgs.VipLevels.Cycle.Core.ApplicationServices;
 using Tgs.VipLevelService.Clients;
 
-namespace Tgs.VipLevels.Birthday.Core.UnitTest.ApplicationServices;
+namespace Tgs.VipLevels.Cycle.Core.UnitTest.ApplicationServices;
 
 public class FormCreateCommandServiceUnitTest
 {

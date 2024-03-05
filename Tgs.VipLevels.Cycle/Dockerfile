@@ -12,6 +12,7 @@ WORKDIR /src
 COPY ["nuget.config", "."]
 COPY ["Tgs.VipLevels.Cycle/Tgs.VipLevels.Cycle.csproj", "Tgs.VipLevels.Cycle/"]
 COPY ["Tgs.VipLevels.Cycle.Core/Tgs.VipLevels.Cycle.Core.csproj", "Tgs.VipLevels.Cycle.Core/"]
+COPY ["Tgs.VipLevels.Cycle.Common/Tgs.VipLevels.Cycle.Common.csproj", "Tgs.VipLevels.Cycle.Common/"]
 COPY ["Tgs.VipLevels.Cycle.Repositories/Tgs.VipLevels.Cycle.Repositories.csproj", "Tgs.VipLevels.Cycle.Repositories/"]
 RUN dotnet restore "./Tgs.VipLevels.Cycle/./Tgs.VipLevels.Cycle.csproj"
 COPY . .
