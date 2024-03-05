@@ -10,7 +10,7 @@ namespace Tgs.VipLevels.Cycle.Core.JobApplicationServices;
 
 internal class JobExecuteCommandService(
 	ILogger<JobExecuteCommandService> logger,
-	ISystemClock systemClock,
+	TimeProvider timeProvider,
 	IMessageSender messageSender) : ICommandService<JobExecuteCommand>
 {
 	public async ValueTask ExecuteAsync(JobExecuteCommand command, CancellationToken cancellationToken = default)
@@ -24,7 +24,7 @@ internal class JobExecuteCommandService(
 			BrandId = command.BrandId,
 			BrandCode = command.BrandCode,
 			TimeSpanMinutes = command.TimeSpanMinutes,
-			CurrentTime = systemClock.CurrentTime.ToTimestamp()
+			CurrentTime = timeProvider.GetUtcNow().ToTimestamp()
 		};
 		await messageSender.PublishAsync(
 			subject: VipLevelsCycleNatsConst.Create,

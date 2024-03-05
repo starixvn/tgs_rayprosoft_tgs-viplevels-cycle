@@ -1,9 +1,6 @@
 ﻿namespace Tgs.VipLevels.Cycle.Core;
-
-public interface ISystemClock
+public interface IDateTimeUtensil
 {
-	DateTimeOffset CurrentTime { get; }
-
 	(DateTimeOffset FromOn, DateTimeOffset ToOn) GetSeasonTimeZone(DateTimeOffset source, int timeSpanMinutes = 480);
 
 	DateTimeOffset GetTimeZone(DateTimeOffset source, int timeSpanMinutes = 480);

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Text.Json;
+using Microsoft.Extensions.Logging;
 using Tgs.PlayerService.Client;
 using Tgs.ServiceUtility;
 using Tgs.VipLevelService.Clients;
@@ -7,31 +8,35 @@ namespace Tgs.VipLevels.Cycle.Core.ApplicationServices;
 
 internal class FormCreateCommandService(
 	ILogger<FormCreateCommandService> logger,
-	ISystemClock systemClock,
+	IDateTimeUtensil dateTimeUtensil,
 	IPlayerServiceClient playerServiceClient,
 	IVipLevelServiceClient vipLevelServiceClient) : ICommandService<FormCreateCommand>
 {
 	public async ValueTask ExecuteAsync(FormCreateCommand command, CancellationToken cancellationToken = default)
 	{
 		IEnumerable<string> playerCodes;
-		var currentTime = systemClock.GetTimeZone(command.CurrentTime, command.TimeSpanMinutes);
-		var day = systemClock.GetDayTimeZone(currentTime, command.TimeSpanMinutes);
-		var yesterday = day.AddDays(-1);
-		(DateTimeOffset SeasonFromOn, DateTimeOffset SeasonToOn) = systemClock.GetSeasonTimeZone(yesterday, command.TimeSpanMinutes);
-		(DateTimeOffset MonthFromOn, DateTimeOffset MonthToOn) = systemClock.GetMonthsTimeZone(yesterday, command.TimeSpanMinutes);
-		var compareTo = day.CompareTo(SeasonToOn);
+		var timeZoneCurrentTime = dateTimeUtensil.GetTimeZone(command.CurrentTime, command.TimeSpanMinutes);
+		var dayTimeZone = dateTimeUtensil.GetDayTimeZone(timeZoneCurrentTime, command.TimeSpanMinutes);
+		var yesterDayTimeZone = dayTimeZone.AddDays(-1);
+		(DateTimeOffset SeasonFromOn, DateTimeOffset SeasonToOn) = dateTimeUtensil.GetSeasonTimeZone(yesterDayTimeZone, command.TimeSpanMinutes);
+		(DateTimeOffset MonthFromOn, DateTimeOffset MonthToOn) = dateTimeUtensil.GetMonthsTimeZone(yesterDayTimeZone, command.TimeSpanMinutes);
+		var compareTo = dayTimeZone.CompareTo(SeasonToOn);
 
 		logger.LogInformation("LogOn:{logOn} Message:Process information in this cycle.({info})",
 			DateTime.Now.ToString("o"),
-			 new
-			 {
-				 CurrentTime = currentTime,
-				 SeasonFromOn,
-				 SeasonToOn,
-				 MonthFromOn,
-				 MonthToOn,
-				 CompareTo = compareTo
-			 });
+			JsonSerializer.Serialize(new
+			{
+				command.CurrentTime,
+				command.TimeSpanMinutes,
+				TimeZoneCurrentTime = timeZoneCurrentTime,
+				DayTimeZone = dayTimeZone,
+				YesterDayTimeZone = yesterDayTimeZone,
+				SeasonFromOn,
+				SeasonToOn,
+				MonthFromOn,
+				MonthToOn,
+				CompareTo = compareTo
+			}));
 
 		if (compareTo < 0)
 		{
@@ -39,7 +44,7 @@ internal class FormCreateCommandService(
 				DateTime.Now.ToString("o"),
 				new
 				{
-					CurrentTime = currentTime,
+					CurrentTime = timeZoneCurrentTime,
 					SeasonFromOn,
 					SeasonToOn,
 					MonthFromOn,
