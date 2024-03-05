@@ -26,6 +26,7 @@ internal class FormCreateCommandService(
 			DateTime.Now.ToString("o"),
 			JsonSerializer.Serialize(new
 			{
+				command.BrandCode,
 				command.CurrentTime,
 				command.TimeSpanMinutes,
 				TimeZoneCurrentTime = timeZoneCurrentTime,
