@@ -50,7 +50,7 @@ app.kubernetes.io/name: {{ include "viplevels-cycle.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app: {{ include "viplevels-cycle.name" . }}
 tgs.kind: viplevels
-tgs.viplevels.kind: birthday
+tgs.viplevels.kind: cycle
 {{- end }}
 
 {{/*
