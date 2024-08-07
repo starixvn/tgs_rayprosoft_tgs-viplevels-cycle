@@ -119,3 +119,9 @@ affinity:
           values:
           - viplevels-cycle
       topologyKey: kubernetes.io/hostname
+
+restart:
+  enabled: false
+  serviceAccount: viplevels-cycle-restarter
+  annotations: {}
+  schedule: 0 0 * * *
