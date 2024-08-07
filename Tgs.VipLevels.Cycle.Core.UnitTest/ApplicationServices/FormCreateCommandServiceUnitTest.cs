@@ -11,7 +11,7 @@ public class FormCreateCommandServiceUnitTest
 	private static readonly string[] _SourceArray = ["4ucmqplxb029"];
 
 	[Fact]
-	public async void Normal_Process()
+	public async Task Normal_Process()
 	{
 		var fakeLog = NullLogger<FormCreateCommandService>.Instance;
 		var fakeDateTimeUtensil = Substitute.For<IDateTimeUtensil>();
@@ -101,7 +101,7 @@ public class FormCreateCommandServiceUnitTest
 	}
 
 	[Fact]
-	public async void This_player_has_sent_periodic_benefits()
+	public async Task This_player_has_sent_periodic_benefits()
 	{
 		var fakeLog = NullLogger<FormCreateCommandService>.Instance;
 		var fakeDateTimeUtensil = Substitute.For<IDateTimeUtensil>();
@@ -191,7 +191,7 @@ public class FormCreateCommandServiceUnitTest
 	}
 
 	[Fact]
-	public async void The_cycle_benefit_payment_time_has_not_been_reached()
+	public async Task The_cycle_benefit_payment_time_has_not_been_reached()
 	{
 		var fakeLog = NullLogger<FormCreateCommandService>.Instance;
 		var fakeDateTimeUtensil = Substitute.For<IDateTimeUtensil>();
